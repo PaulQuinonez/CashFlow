@@ -1,0 +1,55 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  /* background: linear-gradient(to right, #333399, #ff00cc); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  padding: 20px;
+  text-align: left;
+}
+
+.logo img {
+  max-width: 300px;
+}
+
+.security-tips {
+  background-color: #BC157C;
+  padding: 40px;
+  text-align: left;
+  height: 100%;
+}
+
+.security-tips h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 60%;
+}
+
+.btn-ingresar {
+  width: 12%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 48%;
+  background-color: #B31579;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control::placeholder {
+  color: #CFCEE6;
+  /* Cambia el color a tu preferencia */
+}
+
+.form-control:hover {
+  background-color: #F3F2F7;
+  /* Cambia el color a tu preferencia */
+}

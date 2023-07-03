@@ -1,0 +1,311 @@
+.main--content {
+  position: a;
+  background: #ebe9e9;
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 30rem;
+
+}
+
+.header--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #BC157C;
+  border-radius: 10px;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+
+.header--title {
+  color: #fff;
+}
+
+.user--info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card--container {
+  background: #BC157C;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.card--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main--title {
+  color: #fff;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+.payment--card {
+  background: rgba(229, 223, 223);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-top: 10px;
+  width: 290px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.5s ease-in-out;
+}
+
+.payment--card:hover {
+  transform: translateY(-5px)
+}
+
+.card--header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.amount{
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.amount--value{
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
+.icon{
+  color: #fff;
+  padding: 1rem;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  background: red;
+}
+
+.card-detail{
+  font-size: 18px;
+  color: #777777;
+  letter-spacing: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.light-red{
+  background: rgb(251, 233, 233);
+}
+
+.light-purple{
+  background: rgb(254, 226, 254);
+}
+
+.light-green{
+  background: rgb(235, 254, 235);
+}
+
+.light-blue{
+  background: rgb(236, 236, 254);
+}
+
+.dark-red{
+  background: red;
+}
+
+.dark-purple{
+  background: purple;
+}
+
+.dark-green{
+  background: green;
+}
+
+.dark-blue{
+  background: blue;
+}
+
+.tabular--wrapper{
+  background: #BC157C;
+  margin-top: 1rem;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.table-container{
+  width: 100%;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #fff;
+  color: #BC157C;
+}
+
+th{
+  padding: 15px;
+  text-align: left;
+}
+
+tbody{
+  background: #f2f2f2;
+}
+
+td{
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+tr:nth-child(even){
+  background: #fff;
+}
+
+tfoot{
+  background: rgba(113, 99, 186, 255);
+  font-weight: bold;
+  color: #fff;
+}
+
+tfoot td{
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.ingresos{
+  color: rgb(124, 255, 124);
+}
+
+.egresos{
+  color: rgb(255, 0, 0);
+}
+
+.table-container button{
+  color: green;
+  background: none;
+  cursor: pointer;
+}
+
+.action{
+  position: fixed;
+  top: 20px;
+  right: 30px;
+}
+
+.action .profile{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action .profile img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .menu{
+  position: absolute;
+  top: 120px;
+  right: -10px;
+  padding: 10px 0px;
+  background: #BC157C;
+  box-shadow: 9px 10px 19px -13px black;
+  width: 200px;
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action .menu.active{
+  top: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action .menu::before{
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3{
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+
+.action .menu h3 span{
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 400;
+}
+
+.action .menu ul li{
+  list-style: none;
+  padding: 10px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img{
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hove img{
+  opacity: 1;
+}
+
+.action .menu ul li a{
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover a{
+  color: #EBCA22;
+}
+

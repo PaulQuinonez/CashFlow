@@ -1,0 +1,70 @@
+<body>
+
+  <div class="container-fluid" style="height: 100vh;">
+    <div class="row h-100">
+      <aside class="col-md-8 h-100">
+        <div>
+          <div class="logo mb-5">
+            <img src="../../../../assets/img/Cash Flow.png" alt="Logo Banco Guayaquil" />
+          </div>
+          <h1 class="mb-4" style="margin-left: 3.5%; font-size: 30px; color: #0A005C; font-weight: bold;">Cash Flow Web
+          </h1>
+          <p style="margin-left: 3.5%; font-size: 17px; color: #33364D;">Registro de nuevo usuario</p>
+          <form class="row g-3" style="margin-left: 3%" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <div class="col-md-6 mb-3">
+              <label for="name" class="form-label" style="font-size: 19px;">Nombre y Apellido</label>
+              <input type="text" class="form-control" style="padding: 11px; color: #333333; cursor: pointer;"
+                placeholder="Ingresa tu nombre" name="name" id="name" #name="ngModel" [(ngModel)]="auth.name" autofocus
+                required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label" style="font-size: 19px;">Correo</label>
+              <input type="text" class="form-control" id="email" placeholder="Ingrese su correo"
+                style="padding: 11px; color: #333333; cursor: pointer;" name="email" #email="ngModel"
+                [(ngModel)]="auth.email" autofocus required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label" style="font-size: 19px;">Teléfono</label>
+              <input type="text" class="form-control" style="padding: 11px; color: #333333; cursor: pointer;"
+                placeholder="Ingrese tu teléfono" name="phone" id="phone" #phone="ngModel" [(ngModel)]="auth.phone"
+                autofocus required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="address" class="form-label" style="font-size: 19px;">Dirección</label>
+              <input type="text" class="form-control" style="padding: 11px; color: #333333; cursor: pointer;"
+                placeholder="Ingresa tu dirección" name="address" id="address" #address="ngModel"
+                [(ngModel)]="auth.address" autofocus required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="password" class="form-label" style="font-size: 19px;">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="*********"
+                style="padding: 11px; color: #333333; cursor: pointer;" name="password" #password="ngModel"
+                [(ngModel)]="auth.password" required>
+            </div>
+            <button type="submit" class=" btn-ingresar">Registrarse</button>
+          </form>
+
+          <div style="color: #BC157C; margin-top: 40px; margin-left: 3.5%;">
+            <p>¿Ya tienes cuenta?<a routerLink="/login"
+                style=" text-decoration: none; color: #BC157C;font-weight: bold;"> Inicia Sesión.</a></p>
+          </div>
+        </div>
+      </aside>
+      <aside class="col-md-4 h-100" style="background-color: #BC157C;">
+        <div class="security-tips" style="overflow: hidden;">
+          <h2>Consejos de seguridad</h2>
+          <ul style="color: #fff;">
+            <li>Cash Flow no solicita tu usuario ni contraseña por enlaces de correos electrónicos, llamadas o
+              mensajes.</li>
+            <li>Actualiza periódicamente tu clave de correo electrónico con una complejidad adecuada (número de
+              caracteres y combinación).</li>
+            <li>Recuerda que cada ingreso a Cash Flow Web, el sistema un token único para mayor seguridad.</li>
+            <li>Por favor, verifica siempre que en tu navegador aparezca la dirección correcta de la página web de
+              Cash Flow.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</body>

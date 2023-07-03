@@ -1,0 +1,47 @@
+<body>
+  <div class="container-fluid" style="height: 100vh;">
+    <div class="row h-100">
+      <aside class="col-md-8 h-100">
+        <div>
+          <div class="logo mb-5">
+            <img src="../../../../assets/img/Cash Flow.png" alt="Logo Banco Guayaquil" />
+          </div>
+          <h1 class="mb-4" style="margin-left: 25%; font-size: 30px; color: #0A005C; font-weight: bold;">Cash Flow Web</h1>
+          <p style="margin-left: 25%; font-size: 17px; color: #33364D;">Si aún no tienes usuario, registrate haciendo click en la parte inferior para <br> crearlo.</p>
+          <form style="margin-left: 25%" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div class="mb-5">
+              <label for="username" class="form-label" style="font-size: 19px;">Correo</label>
+              <input type="text" class="form-control" id="username" placeholder="Ingrese su correo"
+                style="padding: 11px; color: #333333; cursor: pointer;" name="emailForm" #email="ngModel" [(ngModel)]="auth.email" autofocus required>
+            </div>
+            <div class="mb-5">
+              <label for="password" class="form-label" style="font-size: 19px;">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="*********"
+                style="padding: 11px; color: #333333; cursor: pointer;" name="passwordForm" #password="ngModel" [(ngModel)]="auth.password" required>
+            </div>
+            <button type="submit" class=" btn-ingresar">Ingresar</button>
+          </form>
+
+        <div style="color: #BC157C; margin-top: 50px; margin-left: 25%;">
+          <p>¿No tienes cuenta aún?<a  routerLink="/register" style=" text-decoration: none; color: #BC157C;font-weight: bold;"> Registrate Aquí.</a></p>
+        </div>
+        </div>
+      </aside>
+      <aside class="col-md-4 h-100" style="background-color: #BC157C;">
+        <div class="security-tips" style="overflow: hidden;">
+          <h2>Consejos de seguridad</h2>
+          <ul style="color: #fff;">
+            <li>Cash Flow no solicita tu usuario ni contraseña por enlaces de correos electrónicos, llamadas o
+              mensajes.</li>
+            <li>Actualiza periódicamente tu clave de correo electrónico con una complejidad adecuada (número de
+              caracteres y combinación).</li>
+            <li>Recuerda que cada ingreso a Cash Flow Web, el sistema un token único para mayor seguridad.</li>
+            <li>Por favor, verifica siempre que en tu navegador aparezca la dirección correcta de la página web de
+              Cash Flow.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</body>

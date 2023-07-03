@@ -1,0 +1,213 @@
+<div class="main--content">
+  <div class="header--wrapper">
+    <div class="header--title">
+      <h2><strong>Dashboard</strong></h2>
+      <span>Bienvenido, {{user?.name}}!</span>
+    </div>
+    <div class="user--info">
+      <!-- <img src="../../../assets/img/logo.png" alt=""> -->
+      <div class="action">
+        <div class="profile" (click)="toggleMenu()">
+          <img src="../../../assets/img/logo2.png" alt="">
+        </div>
+        <div class="menu" [ngClass]="{'active': isMenuOpen}">
+          <ul>
+            <li><img src="../../../assets/img/account-manager.png" alt=""><a data-bs-toggle="modal"
+                data-bs-target="#modal-perfil">Mi Perfil</a></li>
+            <li><img src="../../../assets/img/cerrar-sesion.png" alt=""><a (click)="logout()">Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card--container">
+    <div class="card--wrapper">
+      <div class="payment--card light-purple">
+        <div class="card--header">
+          <div class="amount">
+            <span class="title">
+              Balance
+            </span>
+            <span class="amount--value">
+              ${{user?.balance.$numberDecimal}}
+            </span>
+          </div>
+          <i class="fas fa-dollar-sign fa-beat icon dark-purple"></i>
+        </div>
+        <a class="btn btn-sm text-white" data-bs-toggle="modal" data-bs-target="#modal-registrar-transaccion"
+          style="background-color:#BC157C">Nueva Transacción</a>
+      </div>
+
+      <div class="payment--card light-green">
+        <div class="card--header">
+          <div class="amount">
+            <span class="title">
+              Total Ingresos Realizados
+            </span>
+            <span class="amount--value mt-3">
+              ${{ingresos}}
+            </span>
+          </div>
+          <i class="fa-solid fa-arrow-trend-up fa-beat icon dark-green mt-3"></i>
+        </div>
+      </div>
+      <div class="payment--card light-red">
+        <div class="card--header">
+          <div class="amount">
+            <span class="title">
+              Total Egresos Realizados
+            </span>
+            <span class="amount--value mt-3">
+              ${{egresos}}
+            </span>
+          </div>
+          <i class="fa-solid fa-arrow-trend-down fa-beat icon dark-red mt-3"></i>
+        </div>
+      </div>
+    </div>
+    <div class="tabular--wrapper">
+      <h3 class="main--title">Datos Financieros</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 7.5%;">Date</th>
+              <th style="padding-left: 10.2%;">Tip de Transaccion</th>
+              <th style="padding-left: 2%;">Descripcion</th>
+              <th style="padding-left: 1%;">Monto</th>
+              <th style="padding-left: 3.5%;">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of transactions | paginate: { itemsPerPage: 5, currentPage: p };">
+            <tr>
+              <td style="padding-left: 6.5%;">{{item.date}}</td>
+              <td style="padding-left: 12.5%;">{{item.type_id.name}}</td>
+              <td style="padding-left: 2.5%;">{{item.description}}</td>
+              <td style="padding-left: 1.6%;">${{item.amount.$numberDecimal}}</td>
+              <td style="padding-left: 4.8%;">
+                <a (click)="eliminar(item._id)" style="cursor: pointer; color: red;"><i
+                    class="fa-solid fa-trash fa-bounce" style="color: #BC157C;"></i></a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- PAGINACION -->
+    <div class="mt-3">
+      <pagination-controls (pageChange)="p = $event" style="color: #fff;"></pagination-controls>
+    </div>
+    <!-- PAGINACION -->
+  </div>
+
+</div>
+<!--MODAL AGREGAR TRANSACCION-->
+<div class="modal fade" id="modal-registrar-transaccion" tabindex="-1" role="dialog" style="display: none;">
+  <form #ingresoForm="ngForm" (ngSubmit)="registrar_ingreso(ingresoForm)">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="color: #fff; background-color: #0A2558;">
+          <h5 class="modal-title">Registrar nueva transacción</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <label class="form label">Monto del ingreso</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="amount" placeholder="0" #amount="ngModel" name="amount"
+                  [(ngModel)]="transaction!.amount" name="amount" required>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-label">
+                  Tipo de transaccion
+                </label>
+                <select class="form-control form-select" #type_id="ngModel" name="type_id"
+                  [(ngModel)]="transaction!.type_id" required>
+                  <option value="" disabled>Selecciona un tipo</option>
+                  <option value="{{item._id}}" *ngFor="let item of types">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-3">
+              <label class="form label">Descripción de la transacción</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="description" placeholder="Motivo de la transacción"
+                  #description="ngModel" name="description" [(ngModel)]="transaction!.description" name="description"
+                  required>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-3">
+              <label class="form label">Descripción de la transacción</label>
+              <div class="form-group">
+                <input type="date" class="form-control mt-2" id="date" #date="ngModel" name="date"
+                  [(ngModel)]="transaction!.date" name="date" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn " data-bs-dismiss="modal"
+            style="color: #fff; background-color: #BC157C;">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--MODAL AGREGAR TRANSACCION-->
+
+<!--MODAL PERFIL-->
+<div class="modal fade" id="modal-perfil" tabindex="-1" role="dialog" style="display: none;">
+  <form #ingresoForm="ngForm" (ngSubmit)="registrar_ingreso(ingresoForm)">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="color: #fff; background-color: #0A2558;">
+          <h5 class="modal-title">DATOS DEL USUARIO</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <label class="form label">Nombre y Apellido</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="amount" placeholder="0" #amount="ngModel" name="amount"
+                  [(ngModel)]="user.name" name="amount" readonly>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <label class="form label">Correo Electrónico</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="emial" placeholder="0" #emial="ngModel" name="emial"
+                  [(ngModel)]="user.email" name="emial" readonly>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-3">
+              <label class="form label">Dirección</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="address" placeholder="Motivo de la transacción"
+                  #address="ngModel" name="address" [(ngModel)]="user.address" name="address" readonly>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-3">
+              <label class="form label">Teléfono</label>
+              <div class="form-group">
+                <input type="text" class="form-control mt-2" id="phone" #phone="ngModel" name="phone"
+                  [(ngModel)]="user.phone" name="date" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--MODAL AGREGAR TAREA-->
